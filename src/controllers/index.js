@@ -15,15 +15,16 @@ router.get('/bountyDetails', authCheck, bounty.get);
 //Auth Routes
 router.get('/login', auth.loginPage);
 router.get('/register', auth.registerPage);
-router.get('/logout', auth.logout);
+router.get('/logout', authCheck, auth.logout);
 
 //POST routes
 router.post('/authenticate', auth.authenticate);
-router.post('/register', auth.addUser);
+router.post('/addUser', auth.addUser);
 //router.post('/addBounty', bounty.post)
 
 //Error Routes
 router.use(error.client);
 router.use(error.server);
+//403 route
 
 module.exports = router;

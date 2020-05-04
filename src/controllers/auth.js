@@ -43,7 +43,7 @@ exports.addUser = (req, res) => {
         try {
 
             //ADD TO DB
-            await addNewUser(username, hash) // TODO: NEED TO BUILD FUNCTION
+            //await addNewUser(username, hash) // FIXME: NEED TO BUILD FUNCTION
 
             res.redirect('/')
 
@@ -65,10 +65,10 @@ exports.authenticate = async (req, res) => {
         const { password, username } = req.body;
 
         //GET USER DETAILS FROM USERNAME
-        const user = await findByUsername(username); //TODO: Ned to build function
+        //const users = await findByUsername(username); //TODO: Ned to build function
 
         //CHECK CREDENTIALS
-        bcrypt.compare(password, user.password, function (err, result) {
+        bcrypt.compare(password, users.password, function (err, result) {
             if (!result) {
                 return res.render('login', {
                     error: 'Password is incorrect'
@@ -76,7 +76,7 @@ exports.authenticate = async (req, res) => {
             }
 
             //SIGN JWT TOKEN
-            jwt.sign(user.username, process.env.JWT_SECRET, function (err, token) {
+            jwt.sign(users.username, process.env.JWT_SECRET, function (err, token) {
                 if (err) {
                     res.render('login', {
                         error: err.message

@@ -8,12 +8,12 @@ exports.get = (req, res) => {
         });
     }
 
-    //Get bounties function TODO:
+    //const bountyData = getBounties() FIXME:
 
     if (res.locals.signedIn) {
         return res.render('home', {
             signedIn: true,
-            bounties: { bounties },
+            bounties: { bountyData },
             username: res.locals.username
         });
     }
