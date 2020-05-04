@@ -103,8 +103,6 @@ exports.authenticate = async (req, res) => {
 //GET LOG USER OUT & REDIRECT TO WELCOME
 exports.logout = (req, res, next) => {
     res.clearCookie('access_token');
-    console.log(req.cookies);
-    
+    console.log(req.cookies);  
     res.redirect('/');
-    next();
 };
