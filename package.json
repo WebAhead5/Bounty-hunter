@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/server.js",
+    "dev": "nodemon src/server.js",
+    "testdb": "NODE_ENV=test node ./src/tests/db-test.js",
+    "test": "node ./tests/tests.js | tap-spec"
   },
   "repository": {
     "type": "git",
