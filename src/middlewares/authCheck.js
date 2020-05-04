@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
             data
         ) {
             if (err) {
-                res.local.error = err;
+                res.locals.error = err;
                 return next();
             }
 

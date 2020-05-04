@@ -3,6 +3,30 @@
     <h1 class="welcome_msg">Hello {{users.name}} </h1>
     <h1 class="user_score">Score: {{users.score}} </h1>
     <a href="/logout">Logout</a>
+    <section class="bounties">
+        <div class="bounties-list">
+             {{#each bounties}}
+                <ul> 
+                    <li>
+                        {{this.name}}
+                    </li>
+                    <li>
+                        {{this.crimes}}
+                    </li>
+                    <li>
+                        {{this.status}}
+                    </li>
+                    <li>
+                        {{this.bounty}}
+                    </li>
+                    <li>
+                        {{this.furtherinfo}}
+                    </li>
+                    <a href="/bounty/{{this.id}}">Click here for more detail</a>
+                </ul>
+             {{/each}}
+             </div>
+    </section>
     {{else}}
         {{welcome}}
         <h1>You are logged out</h1>
