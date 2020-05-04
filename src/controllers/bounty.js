@@ -1,3 +1,4 @@
+const getBounties = require('../models/queries/readBounties');
 
 //GET HOMEPAGE (IF lOGGED IN)
 exports.get = (req, res) => {
@@ -7,7 +8,7 @@ exports.get = (req, res) => {
         });
     }
 
-    //const bountyData = getBounties() FIXME:
+    const bountyData = getBounties()
 
     if (res.locals.signedIn) {
         return res.render('bountyDetails', {

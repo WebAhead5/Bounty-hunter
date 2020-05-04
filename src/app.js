@@ -27,6 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set('port', process.env.PORT || 4000);
 
-// app.use(controllers);
+app.use(controllers);
 
 module.exports = app;

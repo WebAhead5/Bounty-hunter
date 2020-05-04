@@ -18,7 +18,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(30) UNIQUE NOT NULL,
     username VARCHAR(30) NOT NULL,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(300) NOT NULL,
     privileges VARCHAR(30) NOT NULL,
     score INTEGER NOT NULL
 );

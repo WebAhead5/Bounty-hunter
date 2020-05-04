@@ -1,6 +1,9 @@
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const addNewUser = require('../models/queries/addUser');
+const findByUsername = require('../models/queries/findByUsername');
+
 
 
 //TODO:
@@ -9,13 +12,13 @@ const jwt = require('jsonwebtoken');
 
 
 //GET LOGIN PAGE
-exports.login = (req, res) => {
+exports.loginPage = (req, res) => {
     res.render('login');
 };
 
 
 //GET REGISTER PAGE
-exports.register = (req, res) => {
+exports.registerPage = (req, res) => {
     res.render('register');
 };
 
@@ -26,7 +29,7 @@ exports.register = (req, res) => {
 exports.addUser = (req, res) => {
 
     //CHECK PASSWORD IS THE SAME
-    const { password, username, confirmPassword } = req.body;
+    const { name, password, username, confirmPassword } = req.body;
     if (password !== confirmPassword) {
         return res.render('register', {
             error: "Passwords don't match"
@@ -43,8 +46,9 @@ exports.addUser = (req, res) => {
         try {
 
             //ADD TO DB
-            //await addNewUser(username, hash) // FIXME: NEED TO BUILD FUNCTION
+            await addNewUser(name, username, hash)
 
+            
             res.redirect('/')
 
             //IF ERROR WHEN ADDING
@@ -65,7 +69,7 @@ exports.authenticate = async (req, res) => {
         const { password, username } = req.body;
 
         //GET USER DETAILS FROM USERNAME
-        //const users = await findByUsername(username); //TODO: Ned to build function
+        const users = await findByUsername(username); 
 
         //CHECK CREDENTIALS
         bcrypt.compare(password, users.password, function (err, result) {
@@ -99,6 +103,8 @@ exports.authenticate = async (req, res) => {
 //GET LOG USER OUT & REDIRECT TO WELCOME
 exports.logout = (req, res, next) => {
     res.clearCookie('access_token');
+    console.log(req.cookies);
+    
     res.redirect('/');
     next();
 };
