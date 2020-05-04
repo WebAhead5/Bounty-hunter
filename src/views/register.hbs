@@ -1,0 +1,11 @@
+<section>
+    <h1 class="register_title">Register</h1>
+
+    <form class="register_form" action="/addUser" method="POST"></form>
+    <input class="text-input" type="text" name="username" placeholder="Username">
+    <input class="text-input" type="password" name="password" placeholder="Password">
+    <input class="text-input" type="password" name="confirmPassword" placeholder="Confirm password">
+    <input class="submit" type="submit" value="Submit">
+
+    <div class="err-msg">{{error}}</div>
+</section>

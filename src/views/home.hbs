@@ -1,0 +1,8 @@
+<section class="user-info">
+    {{#if signedIn}}
+    <h1 class="welcome_msg">Hello {{users.name}} </h1>
+    <h1 class="user_score">Score: {{users.score}} </h1>
+    {{else}}
+        {{welcome}}
+    {{/if}}
+</section>
