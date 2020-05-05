@@ -1,7 +1,7 @@
 const db = require('../../database/dbconnection')
 
 module.exports = async function (name, username, hash) {
-    console.log(username)
+    console.log("addUser username is: ",username)
     try {
         var exists  = await db.query('SELECT EXISTS(SELECT * FROM users WHERE username = $1);', [username])
     } catch (e) {

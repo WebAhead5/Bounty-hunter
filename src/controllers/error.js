@@ -8,7 +8,7 @@ exports.client = (req, res) => {
 };
 
 exports.server = (err, req, res, next) => {
-    console.err(err)
+    console.error(err)
     res.status(500).render('error', {
         statusCode: 500,
         errorMessage: 'Internal server error',

@@ -43,7 +43,7 @@ exports.addUser = (req, res) => {
     //HASH THE PASSWORD
     bcrypt.hash(password, 10, async (err, hash) => {
         if (err) {
-            console.log('error message in bcrypt: ', error.message)
+            console.error('error message in bcrypt: ', error.message)
             return res.render('register', {
                 error: error.message
             });
@@ -54,8 +54,10 @@ exports.addUser = (req, res) => {
 
             await addNewUser(name, username, hash);
 
+            const users = await findByUsername(username);
+
             //created users default to not admins
-            const userdata = { username: username, admin: false }
+            const userdata = { username: username, admin: users.admin, userid: users.id }
 
             //Auto login once registered
             loginJWT(res, userdata, process.env.JWT_SECRET)
@@ -63,7 +65,7 @@ exports.addUser = (req, res) => {
 
             //IF ERROR WHEN ADDING
         } catch (error) {
-            console.log("error when addNewUser");
+            console.error("error when addNewUser");
             res.render('register', {
                 error: error.message
             })
@@ -91,7 +93,7 @@ exports.authenticate = async (req, res) => {
             }
 
             //set username and admin status
-            const userdata = { username: username, admin: users.admin }
+            const userdata = { username: username, admin: users.admin, userid: users.id }
 
             loginJWT(res, userdata, process.env.JWT_SECRET)
 
