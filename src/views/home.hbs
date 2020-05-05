@@ -1,8 +1,5 @@
 <section class="user-info">
     {{#if signedIn}}
-    <h1 class="welcome_msg">Hello {{users.name}} </h1>
-    <h1 class="user_score">Score: {{users.score}} </h1>
-    <a href="/logout">Logout</a>
     <section class="bounties">
         <div class="bounties-list">
             {{#each bounties}}
@@ -23,7 +20,7 @@
         </div>
     </section>
     {{else}}
-    {{welcome}}
+    {{> welcome}}
     <h1>You are logged out</h1>
     {{/if}}
 </section>

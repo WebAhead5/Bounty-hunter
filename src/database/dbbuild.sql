@@ -19,7 +19,7 @@ CREATE TABLE users (
     name VARCHAR(30) UNIQUE NOT NULL,
     username VARCHAR(30) NOT NULL,
     password VARCHAR(300) NOT NULL,
-    privileges VARCHAR(30) NOT NULL,
+    admin BOOLEAN DEFAULT FALSE,
     score INTEGER NOT NULL
 );
 
@@ -36,9 +36,9 @@ INSERT INTO bounties (name, picture,crimes,bounty,status,furtherinfo) VALUES
 ('Jake', 'LINK TO PICTURE?', 'Highway robbery out by Old Acre', 1000, 'At Large', 'Often confused with James'),
 ('Marwan', 'LINK TO PICTURE?', 'Rustling cattle outside of Nazareth', 2000, 'At Large', 'He likes to seduce the cattle by playing sweet country music on his old acoustic guitar');
 
-INSERT INTO users (name, username, password, privileges, score) VALUES
-('Mario', 'supermario', 'password1', 'string', 20),
-('Luigi', 'luigiisbetter', 'password2', 'string1', 30);
+INSERT INTO users (name, username, password, admin, score) VALUES
+('Mario', 'supermario', 'password1', FALSE, 20),
+('Luigi', 'luigiisbetter', 'password2', FALSE, 30);
 
 INSERT INTO comments (message, userID, bountyID, dateposted) VALUES
 ('Well gee partner, I will take that bounty', 1, 1, '04/05/2020'),
