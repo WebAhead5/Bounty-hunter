@@ -11,9 +11,9 @@ exports.addComment = (req, res)=>{
     const date = moment().format('YYYY-MM-DD HH:mm:ss');
     const path = url.parse(req.headers.referer).path
     const bountyid = path.substr(path.lastIndexOf('/') + 1);
-    addNewComment(comment, userid, bountyid,date)
+    addNewComment(comment, res.locals.userid, bountyid,date)
+    //console.log(res.locals)
 
-    
     res.redirect(`/bounty/${bountyid}`)
 }
 
