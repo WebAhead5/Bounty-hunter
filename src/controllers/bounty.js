@@ -1,4 +1,9 @@
 const getBountiesById = require('../models/queries/getBountiesById');
+const addBounty = require('../models/queries/addBounty');
+const removeBounty = require('../models/queries/removeBounty');
+
+
+// TODO: add error handling
 
 //GET BOUNTY (IF lOGGED IN)
 exports.get = async (req, res) => {
@@ -22,3 +27,44 @@ exports.get = async (req, res) => {
     //return to welcome page as default if not logged in
     res.render('/');
 };
+
+exports.post = async (req, res) => {
+    if (res.locals.error) {
+        return res.render('error', {
+            error: res.locals.error
+        });
+    }
+
+    const { name, picture, crimes, bounty,status,furtherinfo } = req.body
+
+    if (res.locals.signedIn && res.locals.admin) {
+        await addBounty(name, picture, crimes, bounty, status, furtherinfo)
+        res.redirect('/')
+    }
+}
+
+exports.delete = async (req, res) => {
+    if (res.locals.error) {
+        return res.render('error', {
+            error: res.locals.error
+        });
+    }
+    const id = req.params.id
+    if (res.locals.signedIn && res.locals.admin){
+        await removeBounty(id)
+        res.redirect('/')
+    }
+}
+
+exports.addBountyPage = async (req, res) => {
+    if (res.locals.error) {
+        return res.render('error', {
+            error: res.locals.error
+        });
+    }
+    if (res.locals.signedIn && res.locals.admin){
+        res.render('addbounty', {
+            username: res.locals.username
+        })
+    }
+}
