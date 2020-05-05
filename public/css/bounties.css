@@ -10,6 +10,7 @@ h1.bounty-header{
     font-weight: bold;
     padding: 10px;
     margin-top: 10px;
+    color: #a30b1a;
 }
 
 div.bounties-list{
@@ -23,7 +24,7 @@ div.each-bounty{
     flex-direction: column;
     margin: 20px;
     box-shadow: 1px 1px 2px 1px rgba(117,117,117,1);
-    height: 550px;
+    height: 650px;
     width: 350px;
     background-color: rgb(207, 191, 120);
 }
@@ -59,13 +60,13 @@ div.each-bounty{
     padding: 10px;
 }
 
-.bounties-list a {
+.details_ref{
     text-align: center;
     justify-content: center;
     align-self: center;
     font-family: 'Rye', cursive;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-left: 40px;
 }
 
 /* ------------------Each Bounty Page--------------------- */
@@ -100,6 +101,12 @@ textarea.text-input-bounty::placeholder{
     margin: 10px;
     width: 80px;
     align-self: center;
+    background-color: #a30b1a;
+    font-family:'Rye', cursive ;
+    padding: 2px 2px;
+    border-radius: 1px;
+    border: solid black;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
 }
 
 /* ------------------Message Posts--------------------------- */
@@ -131,6 +138,18 @@ p.message-itself{
     padding-top: 20px;
 }
 
+/* ***************************DELETE BUTTON ************************ */
+
 .delete-form{
-    border: solid black 1px;
+    border: hidden;
+    text-align: center;
+}
+
+.delete-form button{
+    background-color: #a30b1a;
+    font-family:'Rye', cursive ;
+    padding: 2px 2px;
+    border-radius: 1px;
+    border: solid black;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
 }
