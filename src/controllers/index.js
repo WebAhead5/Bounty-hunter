@@ -5,6 +5,7 @@ const home = require('./home');
 const auth = require('./auth');
 const bounty = require('./bounty');
 const error = require('./error');
+const comment = require('./comment')
 const authCheck = require('../middlewares/authCheck');
 
 
@@ -20,6 +21,7 @@ router.get('/logout', authCheck, auth.logout);
 //POST routes
 router.post('/authenticate', auth.authenticate);
 router.post('/addUser', auth.addUser);
+router.post('/addComment',authCheck, comment.addComment);
 //router.post('/addBounty', bounty.post)
 
 //Error Routes

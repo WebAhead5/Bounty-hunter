@@ -1,4 +1,13 @@
-
-{{bounties.name}}
-
-<h1>the bounty name should be:</h1>
+<section class='bounty-comments'>
+    <h1>Further info for the bounty on {{bounties.name}}</h1>
+    <form class="post-comment-form" action="/addComment" method="POST">
+        <input type="text" name="comment" placeholder="Enter comment here">
+        <input type="submit" value="Submit">
+    </form>
+    {{#each comments}}
+    <div>
+        <p>USERID GOES HERE</p>
+        <p>{{this.message}}</p>
+    </div>
+    {{/each}}
+</section>
