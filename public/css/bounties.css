@@ -51,5 +51,21 @@ div.each-bounty{
     text-align: center;
     justify-content: center;
     align-self: center;
-
 }
+
+div.message-div{
+    border: red 2px solid;
+}
+
+.message-div p {
+    border: blue 2px solid;
+    display: inline-block;
+    padding: 5px;
+}
+
+
+p.username{align-self: left;}
+
+p.time{float: right;}
+
+p.message-itself{display: block;}

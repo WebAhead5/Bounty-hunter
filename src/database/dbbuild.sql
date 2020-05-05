@@ -37,7 +37,7 @@ INSERT INTO bounties (name, picture,crimes,bounty,status,furtherinfo) VALUES
 ('Marwan', 'LINK TO PICTURE?', 'Rustling cattle outside of Nazareth', 2000, 'At Large', 'He likes to seduce the cattle by playing sweet country music on his old acoustic guitar');
 
 INSERT INTO users (name, username, password, admin, score) VALUES
-('admin', 'admin', '$2b$10$sa/8nHXaQ5ZAOLcNtWQMbe92NFC/9xSGKadWjl..x8kUsT.bvcNHi', true, 20),
+('admin', 'admin', '$2b$10$sa/8nHXaQ5ZAOLcNtWQMbe92NFC/9xSGKadWjl..x8kUsT.bvcNHi', true, 20), 
 ('Mario', 'supermario', 'password1', FALSE, 20),
 ('Luigi', 'luigiisbetter', 'password2', FALSE, 30);
 
