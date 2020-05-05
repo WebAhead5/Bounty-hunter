@@ -20,7 +20,7 @@ router.get('/logout', authCheck, auth.logout);
 //POST routes
 router.post('/authenticate', auth.authenticate);
 router.post('/addUser', auth.addUser);
-//router.post('/addBounty', bounty.post)
+router.post('/addBounty', authCheck, bounty.post)
 
 //Error Routes
 router.use(error.client);
