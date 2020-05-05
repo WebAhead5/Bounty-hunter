@@ -1,0 +1,55 @@
+@font-face{
+    /* src: url(fonts/HELLDORA.tff); */
+    src: url(/public/fonts/HELLDORA.ttf);
+    font-family: helldora;
+}
+
+div.bounties-list{
+    border: 2px blue solid;
+    display: flex;
+}
+
+div.each-bounty{
+    border: 2px green solid;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.each-bounty p {
+    align-self: center;
+    font-size: 30px;
+    /* font-weight: bold; */
+    padding: 10px;
+    font-family: 'Rye', cursive;
+}
+
+.bounties-list img {
+    width: 100px;
+    height: 100px;
+    border: green 2px solid;
+    margin: 10px;
+    align-self: center;
+    filter: sepia(100%);
+}
+
+.bounties-list ul {
+    background-color: rgba(128, 128, 128, 0.219);
+    border: 2px solid red;
+    list-style-type: none;
+    width: 300px;
+    height: 200;
+    font-family: 'Rye', cursive;
+}
+
+.bounties-list li {
+    font-size: 15px;
+    padding: 10px;
+}
+
+.bounties-list a {
+    text-align: center;
+    justify-content: center;
+    align-self: center;
+
+}

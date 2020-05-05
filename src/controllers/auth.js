@@ -39,20 +39,32 @@ exports.addUser = (req, res) => {
     //HASH THE PASSWORD
     bcrypt.hash(password, 10, async (err, hash) => {
         if (err) {
+            console.log('error message in bcrypt: ', error.message)
             return res.render('register', {
                 error: error.message
             });
         }
         try {
-
             //ADD TO DB
-            await addNewUser(name, username, hash)
-
+            console.log('addNewUser with: ', name, username, hash);
             
-            res.redirect('/')
+            await addNewUser(name, username, hash);
+
+            jwt.sign(username, process.env.JWT_SECRET, function (err, token) {
+                if (err) {
+                    res.render('login', {
+                        error: err.message
+                    });
+                }
+                res.cookie('access_token', token);
+                res.redirect('/'), {
+                    username: name
+                };
+            });
 
             //IF ERROR WHEN ADDING
         } catch (error) {
+            console.log("error when addNewUser");
             res.render('register', {
                 error: error.message
             })

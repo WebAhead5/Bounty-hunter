@@ -5,30 +5,25 @@
     <a href="/logout">Logout</a>
     <section class="bounties">
         <div class="bounties-list">
-             {{#each bounties}}
-                <ul> 
-                    <li>
-                        {{this.name}}
-                    </li>
-                    <li>
-                        {{this.crimes}}
-                    </li>
-                    <li>
-                        {{this.status}}
-                    </li>
-                    <li>
-                        {{this.bounty}}
-                    </li>
-                    <li>
-                        {{this.furtherinfo}}
-                    </li>
-                    <a href="/bounty/{{this.id}}">Click here for more detail</a>
-                </ul>
-             {{/each}}
-             </div>
+            {{#each bounties}}
+            <div class="each-bounty">
+                <p>WANTED</p>
+            <img src="/img/ugly.jpeg" alt="">
+            <img src="../src/images/ugly.jpeg" alt="">
+            <ul>
+                <li> {{this.name}} </li>
+                <li> {{this.crimes}} </li>
+                <li> {{this.status}} </li>
+                <li> {{this.bounty}} </li>
+                <li> {{this.furtherinfo}} </li>
+            </ul>
+            <a href="/bounty/{{this.id}}">Click here for more detail</a>
+            </div>
+            {{/each}}
+        </div>
     </section>
     {{else}}
-        {{welcome}}
-        <h1>You are logged out</h1>
+    {{welcome}}
+    <h1>You are logged out</h1>
     {{/if}}
 </section>

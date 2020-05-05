@@ -1,42 +1,45 @@
 <header class="navbar">
     <nav>
-    <div class="logo">
-        <h4>Bounty Hunter</h4>
-    </div>
-    <ul class="nav-links">
-        {{#unless signedIn}}
-        <li>
-            <a href="./login">Login</a>
-        </li>
-        <li>
-            <a href="./register">Register</a>
-        </li>
-        {{else}}
-        <li>
-            <a href="./">Home</a>
-        </li>
-        <li>
-            <a href="./logout">Contact me</a>
-        </li>
-        {{/unless}}
-    </ul>
-    <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-</nav>
-<script>
-    const navSlide = () => {
-        const burger = document.querySelector('.burger')
-        const nav = document.querySelector('.nav-links')
-        const navLinks = document.querySelectorAll('.navlinks li')
-        //toggle nav
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active')
-            burger.classList.toggle('toggle')
-        })
-    }
-    navSlide();
-</script>
+        <div class="logo">
+            <h4>Bounty Hunter</h4>
+        </div>
+        <ul class="nav-links">
+            {{#unless signedIn}}
+            <li>
+                <a href="./login">Login</a>
+            </li>
+            <li>
+                <a href="./register">Register</a>
+            </li>
+            {{else}}
+            <li>
+                <p>Signed in as: {{username}}</p>
+            </li>
+            <li>
+                <a href="./">Home</a>
+            </li>
+            <li>
+                <a href="./logout">Logout</a>
+            </li>
+            {{/unless}}
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <script>
+        const navSlide = () => {
+            const burger = document.querySelector('.burger')
+            const nav = document.querySelector('.nav-links')
+            const navLinks = document.querySelectorAll('.navlinks li')
+            //toggle nav
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('nav-active')
+                burger.classList.toggle('toggle')
+            })
+        }
+        navSlide();
+    </script>
 </header>
