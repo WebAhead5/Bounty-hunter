@@ -13,8 +13,8 @@ router.get('/', authCheck, home.get);
 router.get('/bounty/:id', authCheck, bounty.get);
 
 //Auth Routes
-router.get('/login', auth.loginPage);
-router.get('/register', auth.registerPage);
+router.get('/login', authCheck, auth.loginPage);
+router.get('/register', authCheck, auth.registerPage);
 router.get('/logout', authCheck, auth.logout);
 
 //POST routes
