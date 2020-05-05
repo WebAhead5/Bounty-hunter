@@ -18,12 +18,15 @@ router.get('/bounty/:id', authCheck, bounty.get);
 router.get('/login', authCheck, auth.loginPage);
 router.get('/register', authCheck, auth.registerPage);
 router.get('/logout', authCheck, auth.logout);
+router.get('/addbounty', authCheck, bounty.addBountyPage)
 
 //POST routes
 router.post('/authenticate', auth.authenticate);
 router.post('/addUser', auth.addUser);
+router.post('/addbounty', authCheck, bounty.post)
+router.post('/deleteBounty/:id', authCheck, bounty.delete)
 router.post('/addComment',authCheck, comment.addComment);
-//router.post('/addBounty', bounty.post)
+
 
 //Error Routes
 router.use(error.client);

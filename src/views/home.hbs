@@ -16,6 +16,13 @@
             </ul>
             <a href="/bounty/{{this.id}}">Click here for more detail</a>
             </div>
+            <div>
+                {{#if ../admin}}
+            <form action="/deletebounty/{{this.id}}" method="post">
+                <button>Delete</button>
+            </form>
+            {{/if}}
+            </div>
             {{/each}}
         </div>
     </section>
