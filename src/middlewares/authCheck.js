@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
     if (req.cookies.access_token) {
-        console.log("authcheck access token is:" , req.cookies.access_token)
+
         jwt.verify(req.cookies.access_token, process.env.JWT_SECRET, function (
             err,
             data
@@ -15,8 +15,6 @@ module.exports = (req, res, next) => {
             res.locals.username = data.username;
             res.locals.admin = data.admin;
             res.locals.userid = data.userid;
-            console.log("auth CHeck res.locals", res.locals);
-            
 
             next()
         });

@@ -13,6 +13,7 @@ const authCheck = require('../middlewares/authCheck');
 router.get('/', authCheck, home.get);
 router.get('/bounty/:id', authCheck, bounty.get);
 
+
 //Auth Routes
 router.get('/login', authCheck, auth.loginPage);
 router.get('/register', authCheck, auth.registerPage);
