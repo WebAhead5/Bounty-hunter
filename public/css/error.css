@@ -23,3 +23,26 @@
     font-size: 22px;
     margin: 2vw;
 }
+
+.homeLink {
+    margin: 2vh;
+    border-radius: 5px;
+    border: solid black;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
+
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+
+  a:visited {
+    color:black;
+  }
+ 
+  
+  a:active {
+    color:black;
+  }

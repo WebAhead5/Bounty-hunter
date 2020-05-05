@@ -15,9 +15,9 @@ exports.get = async (req, res) => {
     }
 
     const bountyData = await getBountiesById(req.params.id);
-    const messageData = await getMessageData(req.params.id);    
+    const messageData = await getMessageData(req.params.id);
     console.log(res.locals.username);
-    
+
 
     if (res.locals.signedIn) {
         return res.render('bounty', {
@@ -30,7 +30,7 @@ exports.get = async (req, res) => {
     }
 
     //return to welcome page as default if not logged in
-    res.render('/');
+    res.redirect('/');
 };
 
 exports.post = async (req, res) => {
@@ -40,7 +40,7 @@ exports.post = async (req, res) => {
         });
     }
 
-    const { name, picture, crimes, bounty,status,furtherinfo } = req.body
+    const { name, picture, crimes, bounty, status, furtherinfo } = req.body
 
     if (res.locals.signedIn && res.locals.admin) {
         await addBounty(name, picture, crimes, bounty, status, furtherinfo)
@@ -55,7 +55,7 @@ exports.delete = async (req, res) => {
         });
     }
     const id = req.params.id
-    if (res.locals.signedIn && res.locals.admin){
+    if (res.locals.signedIn && res.locals.admin) {
         await removeBounty(id)
         res.redirect('/')
     }
@@ -67,7 +67,7 @@ exports.addBountyPage = async (req, res) => {
             error: res.locals.error
         });
     }
-    if (res.locals.signedIn && res.locals.admin){
+    if (res.locals.signedIn && res.locals.admin) {
         res.render('addbounty', {
             username: res.locals.username
         })
