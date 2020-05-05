@@ -56,7 +56,7 @@ exports.delete = async (req, res) => {
     }
 }
 
-exports.addBounty = async (req, res) => {
+exports.addBountyPage = async (req, res) => {
     if (res.locals.error) {
         return res.render('error', {
             error: res.locals.error

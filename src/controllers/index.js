@@ -16,7 +16,7 @@ router.get('/bounty/:id', authCheck, bounty.get);
 router.get('/login', authCheck, auth.loginPage);
 router.get('/register', authCheck, auth.registerPage);
 router.get('/logout', authCheck, auth.logout);
-router.get('/addbounty', authCheck, bounty.addBounty)
+router.get('/addbounty', authCheck, bounty.addBountyPage)
 
 //POST routes
 router.post('/authenticate', auth.authenticate);

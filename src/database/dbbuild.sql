@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS comments CASCADE;
 CREATE TABLE bounties (
     id SERIAL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    picture VARCHAR(30) NOT NULL,
+    picture VARCHAR(300) NOT NULL,
     crimes VARCHAR(300) NOT NULL,
     bounty INTEGER NOT NULL,
     status VARCHAR(30) NOT NULL,
