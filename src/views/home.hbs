@@ -12,22 +12,25 @@
                 <li>Status: {{this.status}} </li>
                 <li>Reward: {{this.bounty}} </li>
                 <li>Other information: {{this.furtherinfo}} </li>
-            </ul>
-            <a href="/bounty/{{this.id}}">Click here for more detail</a>
-            </div>
-            <div>
                 {{#if ../admin}}
+                <li>
             <form class="delete-form" action="/deletebounty/{{this.id}}" method="post">
                 <button>Delete</button>
             </form>
+            </li>
             {{/if}}
+            <li>
+                <a href="/bounty/{{this.id}}" class="details_ref">Click here for more detail</a>
+            </li>
+            </ul>
+            
             </div>
+            
             {{/each}}
         </div>
     </section>
     <br>
     {{else}}
     {{> welcome}}
-    <h1>You are logged out</h1>
     {{/if}}
 </section>
