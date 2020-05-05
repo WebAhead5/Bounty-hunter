@@ -1,4 +1,6 @@
 const tape = require("tape");
+const _test = require('tape-promise').default // <---- notice 'default'
+const test = _test(tape) // decorate tape
 const runDbBuild = require("../database/dbbuild");
 const adduser = require("../models/queries/addUser");
 const findByUsername = require("../models/queries/findByUsername");
@@ -10,6 +12,24 @@ tape("tape is working", t => {
     t.equals(1, 1, "one equals one");
     t.end();
 });
+
+// tape('test findByUsername', t=> {
+//     const username = 'supermario'
+//     let actual;
+//     findByUsername(username, (err, res)=>{
+//         if(err) throw err;
+//         actual = res;
+//         console.log(actual)
+//         let expected = [{username: 'supermario'}]
+//         t.deepEqual(actual, expected)
+//         t.end()
+//     })
+// })
+
+
+
+
+
 
 
 // tape("checkPassword", t => {
