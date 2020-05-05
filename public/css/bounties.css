@@ -130,3 +130,7 @@ p.message-itself{
     color: black;
     padding-top: 20px;
 }
+
+.delete-form{
+    border: solid black 1px;
+}
