@@ -12,7 +12,7 @@ module.exports = async function (name, username, hash) {
     exists = exists.rows[0].exists
     if (exists) throw new Error('User already exists in database')
     try {
-        await db.query(`INSERT INTO users (name, username, password, privileges, score) VALUES($1, $2, $3, $4, $5);`, [name, username, hash, 'string', 0])
+        await db.query(`INSERT INTO users (name, username, password, score) VALUES($1, $2, $3, $4);`, [name, username, hash, 0])
     } catch (e) {
         throw new Error('an error has occurred in the database')
     }
