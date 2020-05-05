@@ -1,0 +1,25 @@
+@font-face{
+    /* src: url(fonts/HELLDORA.tff); */
+    src: url(/public/fonts/HELLDORA.ttf);
+    font-family: helldora;
+}
+
+.errorContainer {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4%;
+    font-family: 'Rye', cursive;
+}
+
+.error {
+    text-align: center;
+    margin: 2vw;
+}
+
+.msg {
+    text-align: center;
+    font-size: 22px;
+    margin: 2vw;
+}

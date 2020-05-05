@@ -3,7 +3,7 @@ const addBounty = require('../models/queries/addBounty');
 
 // TODO: add error handling
 
-//GET HOMEPAGE (IF lOGGED IN)
+//GET BOUNTY (IF lOGGED IN)
 exports.get = async (req, res) => {
     if (res.locals.error) {
         return res.render('error', {
@@ -12,14 +12,17 @@ exports.get = async (req, res) => {
     }
 
     const bountyData = await getBountiesById(req.params.id)
+
     if (res.locals.signedIn) {
         return res.render('bounty', {
+            signedIn: true,
             bounties: bountyData,
-            username: res.locals.username
+            username: res.locals.username,
+            admin: res.locals.admin
         });
     }
 
-    //return to welcome page as default
+    //return to welcome page as default if not logged in
     res.render('/');
 };
 
