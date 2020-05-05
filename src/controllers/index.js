@@ -25,7 +25,7 @@ router.post('/authenticate', auth.authenticate);
 router.post('/addUser', auth.addUser);
 router.post('/addbounty', authCheck, bounty.post)
 router.post('/deleteBounty/:id', authCheck, bounty.delete)
-router.post('/addComment',authCheck, comment.addComment);
+router.post('/addComment', authCheck, comment.addComment);
 
 
 //Error Routes
