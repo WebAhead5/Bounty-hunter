@@ -89,7 +89,7 @@ exports.authenticate = async (req, res) => {
                     error: 'Password is incorrect'
                 });
             }
-
+            
             //set username and admin status
             const userdata = { username: username, admin: users.admin }
 

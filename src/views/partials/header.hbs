@@ -12,6 +12,11 @@
                 <a href="./register">Register</a>
             </li>
             {{else}}
+            {{#if admin}}
+            <li>
+                <a href="./addbounty">Add Bounty</a>
+            </li>
+            {{/if}}
             <li>
                 <p>Signed in as: {{username}}</p>
             </li>
