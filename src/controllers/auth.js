@@ -120,7 +120,7 @@ exports.logout = (req, res, next) => {
 //Cretae JWT and redirect tto home (logged in)
 
 const loginJWT = (res, dataobject, secret) => {
-    console.log(dataobject, secret)
+    console.log("loginJWT tellus us dataobject and secret",dataobject, secret)
 
     jwt.sign(dataobject, secret, function (err, token) {
         if (err) {
