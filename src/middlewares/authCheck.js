@@ -10,11 +10,13 @@ module.exports = (req, res, next) => {
             if (err) {
                 res.locals.error = err;
                 return next();
-            }
+            }         
             res.locals.signedIn = true;
             res.locals.username = data.username;
             res.locals.admin = data.admin;
-            res.locals.userid = data.id;
+            res.locals.userid = data.userid;
+            console.log("auth CHeck res.locals", res.locals);
+            
 
             next()
         });
