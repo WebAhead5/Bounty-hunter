@@ -7,17 +7,17 @@
                 <p>WANTED</p>
             <img src="{{this.picture}}" alt="bounty photo">
             <ul>
-                <li> {{this.name}} </li>
-                <li> {{this.crimes}} </li>
-                <li> {{this.status}} </li>
-                <li> {{this.bounty}} </li>
-                <li> {{this.furtherinfo}} </li>
+                <li>Name:  {{this.name}} </li>
+                <li>Wanted For: {{this.crimes}} </li>
+                <li>Status: {{this.status}} </li>
+                <li>Reward: {{this.bounty}} </li>
+                <li>Other information: {{this.furtherinfo}} </li>
             </ul>
             <a href="/bounty/{{this.id}}">Click here for more detail</a>
             </div>
             <div>
                 {{#if ../admin}}
-            <form action="/deletebounty/{{this.id}}" method="post">
+            <form class="delete-form" action="/deletebounty/{{this.id}}" method="post">
                 <button>Delete</button>
             </form>
             {{/if}}
