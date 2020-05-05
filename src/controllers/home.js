@@ -12,11 +12,12 @@ exports.get = async (req, res) => {
         const bountyData = await getBounties()
         if (res.locals.signedIn) {
             console.log('first if happening', res.locals.signedIn, res.locals.error);
-            
+
             return res.render('home', {
                 signedIn: true,
-                bounties:  bountyData ,
-                username: res.locals.username
+                bounties: bountyData,
+                username: res.locals.username,
+                admin: res.locals.admin
             });
 
         } else {    //return to welcome page as default

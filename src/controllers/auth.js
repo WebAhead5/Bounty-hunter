@@ -6,21 +6,25 @@ const findByUsername = require('../models/queries/findByUsername');
 
 
 
-//TODO:
-//NEED ADDNEW USER FUNCTION
-//NEED GET YSER BY USERNAME FUNCTION
-
-
-//GET LOGIN PAGE
+//GET LOGIN PAGE (IF NOT LOGGED IN)
 exports.loginPage = (req, res) => {
-    res.render('login');
+    if (res.locals.signedIn) {
+        res.redirect('/')
+    } else {
+        res.render('login');
+    }
 };
 
 
-//GET REGISTER PAGE
+//GET REGISTER PAGE (IF NOT LOGGED IN)
 exports.registerPage = (req, res) => {
-    res.render('register');
-};
+    if (res.locals.signedIn) {
+        res.redirect('/')
+    } else {
+        res.render('register');
+    };
+
+}
 
 
 //##############################################################
@@ -47,20 +51,15 @@ exports.addUser = (req, res) => {
         try {
             //ADD TO DB
             console.log('addNewUser with: ', name, username, hash);
-            
+
             await addNewUser(name, username, hash);
 
-            jwt.sign(username, process.env.JWT_SECRET, function (err, token) {
-                if (err) {
-                    res.render('login', {
-                        error: err.message
-                    });
-                }
-                res.cookie('access_token', token);
-                res.redirect('/'), {
-                    username: name
-                };
-            });
+            //created users default to not admins
+            const userdata = { username: username, admin: false }
+
+            //Auto login once registered
+            loginJWT(res, userdata, process.env.JWT_SECRET)
+
 
             //IF ERROR WHEN ADDING
         } catch (error) {
@@ -81,7 +80,7 @@ exports.authenticate = async (req, res) => {
         const { password, username } = req.body;
 
         //GET USER DETAILS FROM USERNAME
-        const users = await findByUsername(username); 
+        const users = await findByUsername(username);
 
         //CHECK CREDENTIALS
         bcrypt.compare(password, users.password, function (err, result) {
@@ -91,16 +90,11 @@ exports.authenticate = async (req, res) => {
                 });
             }
 
-            //SIGN JWT TOKEN
-            jwt.sign(users.username, process.env.JWT_SECRET, function (err, token) {
-                if (err) {
-                    res.render('login', {
-                        error: err.message
-                    });
-                }
-                res.cookie('access_token', token);
-                res.redirect('/');
-            });
+            //set username and admin status
+            const userdata = { username: username, admin: users.admin }
+
+            loginJWT(res, userdata, process.env.JWT_SECRET)
+
         });
     } catch (error) {
         res.render('login', {
@@ -117,3 +111,28 @@ exports.logout = (req, res, next) => {
     res.clearCookie('access_token');
     res.redirect('/');
 };
+
+
+//##############################################################
+
+//Cretae JWT and redirect tto home (logged in)
+
+const loginJWT = (res, dataobject, secret) => {
+    console.log(dataobject, secret)
+
+    jwt.sign(dataobject, secret, function (err, token) {
+        if (err) {
+            res.render('login', {
+                error: err.message
+            });
+        }
+
+        //10 mins cookie age
+        const cookieAge = 1000 * 60 * 10
+
+        res.cookie('access_token', token, { httpOnly: true, maxAge: cookieAge });
+        res.redirect('/'), {
+        };
+    });
+
+}
