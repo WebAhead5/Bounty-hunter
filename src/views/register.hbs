@@ -1,12 +1,23 @@
-<section>
-    <h1 class="register_title">Register</h1>
+<section class="main__container--limited-width">
+    <div class="loginContainer">
+        <div class="loginBlock">
+    
+            <div class="formBlock">
+    <h1 class="regTitle">REGISTER</h1>
 
-    <form class="register_form" action="/addUser" method="POST">
-        <input class="text-input" type="text" name="name" placeholder="Write name">
+
+
+
+    <form class="loginForm" action="/addUser" method="POST">
+        <input class="text-input" type="text" name="name" placeholder="Name">
         <input class="text-input" type="text" name="username" placeholder="Username">
         <input class="text-input" type="password" name="password" placeholder="Password">
         <input class="text-input" type="password" name="confirmPassword" placeholder="Confirm password">
-        <input class="submit" type="submit" value="Submit">
+        <input class="submit" type="submit" value="JOIN US">
     </form>
-    <div class="err-msg">{{error}}</div>
+
+    <div class="loginErr">{{error}}</div>
+               </div>
+        </div>
+    </div>
 </section>
