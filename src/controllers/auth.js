@@ -49,7 +49,7 @@ exports.addUser = (req, res) => {
             console.log('addNewUser with: ', name, username, hash);
             
             await addNewUser(name, username, hash);
-
+            // Sign user in (Jake may want to check this)
             jwt.sign(username, process.env.JWT_SECRET, function (err, token) {
                 if (err) {
                     res.render('login', {
