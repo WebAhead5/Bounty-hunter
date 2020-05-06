@@ -141,9 +141,9 @@ nav {
         z-index: 1;
     }
 
-    /* .nav-links li {
+    .nav-links li {
         opacity: 1;
-    } */
+    }
     .burger {
         display: block;
     }
