@@ -3,8 +3,8 @@
     <section class="bounties">
         <div class="bounties-list">
             {{#each bounties}}
-            <div class="each-bounty">
-                <p>WANTED</p>
+            <div class="each-bounty float">
+                <p class="wanted">WANTED</p>
                 <img src="{{this.picture}}" alt="bounty photo">
                 <ul>
                     <li><b>Name:</b> {{this.name}} </li>
@@ -18,7 +18,7 @@
                     <button>Delete</button>
                 </form>
                 {{/if}}
-                <a href="/bounty/{{this.id}}" class="details_ref">Click here for more detail</a>
+                <a href="/bounty/{{this.id}}" class="details_ref">Click here for more details</a>
             </div>
 
             {{/each}}
