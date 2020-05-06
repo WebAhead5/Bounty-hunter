@@ -15,6 +15,7 @@ exports.get = async (req, res) => {
         }
         const bountyData = await getBountiesById(req.params.id);
         const messageData = await getMessageData(req.params.id);
+        
         if (res.locals.signedIn) {
             return res.render('bounty', {
                 signedIn: true,

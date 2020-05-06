@@ -20,7 +20,7 @@
     {{#each messages}}
     <div class="message-div">
         <p class="username">{{this.username}}</p>
-        <p class="time">{{this.dateposted}}</p>
+        <p class="time">{{helpers this.dateposted}}</p>
         <p class="message-itself">{{this.message}}</p>
     </div>
     {{/each}}

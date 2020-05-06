@@ -3,6 +3,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser')
 const favicon = require('serve-favicon')
+const helpers = require('./views/helpers/datehelper')
 
 const controllers = require('./controllers/index')
 require('dotenv').config();
@@ -21,7 +22,8 @@ app.engine(
     extname: 'hbs',
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    helpers: {helpers}
   })
 );
 
