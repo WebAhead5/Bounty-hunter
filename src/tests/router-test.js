@@ -108,6 +108,29 @@ test("route to add bounties - LOGGED IN AS ADMIN", t => {
 });
 
 
+// test("route to add bounties - LOGGED IN, BUT NOT AS ADMIN", t => {
+//     supertest(router)
+//         .post('/authenticate')
+//         .send({ username: '', password: '' })
+//         .end((err, res) => {
+//             if (err) {
+//                 console.log(err);
+//             }
+//             let cookie = res.headers['set-cookie']
+
+//             supertest(router)
+//                 .get("/addbounty")
+//                 .set('Cookie', cookie)
+//                 .expect(200)
+//                 .expect("content-type", "text/html; charset=utf-8")
+//                 .end((err, res) => {
+//                     t.error(err);
+//                     t.end();
+//                 });
+//         })
+// });
+
+
 test("route to css.styles", t => {
     supertest(router)
         .get("/css/styles.css")
@@ -153,3 +176,44 @@ test("404 no page found", t => {
         });
 });
 
+// POST
+
+
+test("route to bounty 1 - wrong password", t => {
+    supertest(router)
+        .post('/authenticate')
+        .send({ username: 'admin', password: 'wrongpassword' })
+        .end((err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            supertest(router)
+                .get("/")
+                .expect(200)
+                .expect("content-type", "text/html; charset=utf-8")
+                .end((err, res) => {
+                    t.error(err);
+                    t.end();
+                });
+        });
+});
+
+
+test("route to bounty 1 - wrong password - redirect", t => {
+    supertest(router)
+        .post('/authenticate')
+        .send({ username: 'admin', password: 'wrongpassword' })
+        .end((err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            supertest(router)
+                .get("/bounty/1")
+                .expect(302)
+                .expect("content-type", "text/plain; charset=utf-8")
+                .end((err, res) => {
+                    t.error(err);
+                    t.end();
+                });
+        });
+});

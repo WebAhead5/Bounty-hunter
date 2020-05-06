@@ -3,6 +3,7 @@
         <div class="loginBlock">
 
             <div class="formBlock">
+
                 <h1 class="regTitle">REGISTER</h1>
                 <form class="loginForm" action="/addUser" method="POST">
                     <input class="text-input" type="text" name="name" id="name" placeholder="Name" required>
@@ -18,7 +19,9 @@
                     <input class="submit" type="submit" value="JOIN US">
                 </form>
 
-                <div class="loginErr">{{error}}</div>
+                {{#if error}}
+        <div class="loginErr"><i class="fas fa-skull"></i><br>{{error}}</div>
+    {{/if}}
             </div>
         </div>
     </div>

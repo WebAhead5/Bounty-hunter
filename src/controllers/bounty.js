@@ -15,6 +15,7 @@ exports.get = async (req, res) => {
         }
         const bountyData = await getBountiesById(req.params.id);
         const messageData = await getMessageData(req.params.id);
+        
         if (res.locals.signedIn) {
             return res.render('bounty', {
                 signedIn: true,
@@ -44,6 +45,11 @@ exports.post = async (req, res) => {
         }
 
         const { name, picture, crimes, bounty, status, furtherinfo } = req.body
+        if (name === "" || picture === '' || bounty === "" || status === '' || furtherinfo === '') {
+            return res.render("addbounty", {
+                error: "All fields must be completed, buddy"
+            });
+        }
 
         if (res.locals.signedIn && res.locals.admin) {
             await addBounty(name, picture, crimes, bounty, status, furtherinfo)
@@ -52,7 +58,7 @@ exports.post = async (req, res) => {
     }
     catch (error) {
         res.render('error', {
-            statusCode: " Bounty",
+            statusCode: "addbounty",
             errorMessage: error.message
         });
     }

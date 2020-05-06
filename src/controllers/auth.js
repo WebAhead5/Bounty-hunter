@@ -34,9 +34,16 @@ exports.addUser = (req, res) => {
 
     //CHECK PASSWORD IS THE SAME
     const { name, password, username, confirmPassword } = req.body;
+
+    if (name === "" || password === '' || username === '' || confirmPassword === '') {
+        return res.render('register', {
+            error: "All fields must be completed, buddy"
+        });
+    }
+
     if (password !== confirmPassword) {
         return res.render('register', {
-            error: "Passwords don't match"
+            error: "Passwords don't match, partner"
         });
     }
 
@@ -81,6 +88,12 @@ exports.authenticate = async (req, res) => {
     try {
         const { password, username } = req.body;
 
+        if (username === "" || password === '') {
+            return res.render('login', {
+                error: "All fields must be completed, buddy"
+            });
+        }
+
         //GET USER DETAILS FROM USERNAME
         const users = await findByUsername(username);
 
@@ -88,10 +101,10 @@ exports.authenticate = async (req, res) => {
         bcrypt.compare(password, users.password, function (err, result) {
             if (!result) {
                 return res.render('login', {
-                    error: 'Password is incorrect'
+                    error: 'Password is incorrect, cowboy'
                 });
             }
-            
+
             //set username and admin status
             const userdata = { username: username, admin: users.admin, userid: users.id }
 
@@ -120,7 +133,6 @@ exports.logout = (req, res, next) => {
 //Cretae JWT and redirect tto home (logged in)
 
 const loginJWT = (res, dataobject, secret) => {
-    console.log("loginJWT tellus us dataobject and secret",dataobject, secret)
 
     jwt.sign(dataobject, secret, function (err, token) {
         if (err) {
