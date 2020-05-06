@@ -4,42 +4,55 @@
     font-family: helldora;
 }
 
+h1.bounty-header{
+    font-family: 'Rye', cursive;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+    color: #a30b1a;
+}
+
 div.bounties-list{
-    border: 2px blue solid;
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 div.each-bounty{
-    border: 2px green solid;
     display: flex;
     flex-direction: column;
-
+    margin: 20px;
+    box-shadow: 1px 1px 2px 1px rgba(117,117,117,1);
+    height: 650px;
+    width: 350px;
+    background-color: rgb(207, 191, 120);
 }
 
 .each-bounty p {
     align-self: center;
-    font-size: 30px;
+    font-size: 35px;
     /* font-weight: bold; */
     padding: 10px;
     font-family: 'Rye', cursive;
+    margin-top: 10px;
 }
 
 .bounties-list img {
-    width: 100px;
-    height: 100px;
-    border: green 2px solid;
+    border: solid black 2px;
+    width: 200px;
+    height: 200px;
     margin: 10px;
     align-self: center;
     filter: sepia(100%);
 }
 
 .bounties-list ul {
-    background-color: rgba(128, 128, 128, 0.219);
-    border: 2px solid red;
     list-style-type: none;
     width: 300px;
-    height: 200;
+    height: 300px;
     font-family: 'Rye', cursive;
+    align-self: center;
 }
 
 .bounties-list li {
@@ -47,25 +60,96 @@ div.each-bounty{
     padding: 10px;
 }
 
-.bounties-list a {
+.details_ref{
     text-align: center;
     justify-content: center;
     align-self: center;
+    font-family: 'Rye', cursive;
+    font-weight: bold;
+    margin-left: 40px;
 }
 
+/* ------------------Each Bounty Page--------------------- */
+
+section.bounty-comments {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------Form--------------------------- */
+form.post-comment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+textarea.text-input-bounty{
+    width: 90%;
+    height: 50px;
+    align-self: center;
+    align-content: center;
+    font-family: 'Rye', cursive;
+}
+
+textarea.text-input-bounty::placeholder{
+    font-family: 'Rye', cursive;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.submit-bounty{
+    margin: 10px;
+    width: 80px;
+    align-self: center;
+    background-color: #a30b1a;
+    font-family:'Rye', cursive ;
+    padding: 2px 2px;
+    border-radius: 1px;
+    border: solid black;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
+}
+
+/* ------------------Message Posts--------------------------- */
+
 div.message-div{
-    border: red 2px solid;
+    box-shadow: 1px 1px 2px 1px rgba(117,117,117,1);
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    font-family: 'Rye', cursive;    
 }
 
 .message-div p {
-    border: blue 2px solid;
     display: inline-block;
     padding: 5px;
+    color: grey;
+    font-size: 12px;
 }
 
 
-p.username{align-self: left;}
+p.username{align-self: left;    color: black; font-weight: bold;}
 
-p.time{float: right;}
+p.time{float: right; }
 
-p.message-itself{display: block;}
+p.message-itself{
+    display: block;
+    color: black;
+    padding-top: 20px;
+}
+
+/* ***************************DELETE BUTTON ************************ */
+
+.delete-form{
+    border: hidden;
+    text-align: center;
+}
+
+.delete-form button{
+    background-color: #a30b1a;
+    font-family:'Rye', cursive ;
+    padding: 2px 2px;
+    border-radius: 1px;
+    border: solid black;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
+}

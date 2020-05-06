@@ -1,23 +1,21 @@
 <section class='bounty-comments'>
-    <h1>Further info for the bounty on {{bounties.name}}</h1>
+    <h1 class="bounty-header">Further information concerning the bounty on "{{bounties.name}}"</h1>
     <div class="bounties-list">
         <div class="each-bounty">
             <p>WANTED</p>
-            <img src="/img/ugly.jpeg" alt="">
-            <img src="../src/images/ugly.jpeg" alt="">
+            <img src="{{bounties.picture}}" alt="">
             <ul>
-                <li> {{bounties.name}} </li>
-                <li> {{bounties.crimes}} </li>
-                <li> {{bounties.status}} </li>
-                <li> {{bounties.bounty}} </li>
-                <li> {{bounties.furtherinfo}} </li>
+                <li>Name: {{bounties.name}} </li>
+                <li>Wanted For: {{bounties.crimes}} </li>
+                <li>Status: {{bounties.status}} </li>
+                <li>Reward: ${{bounties.bounty}} </li>
+                <li>Other information: {{bounties.furtherinfo}} </li>
             </ul>
-            <a href="/bounty/{{bounties.id}}">Click here for more detail</a>
         </div>
     </div> <br>
     <form class="post-comment-form" action="/addComment" method="POST">
-        <input type="text" name="comment" placeholder="Enter comment here">
-        <input type="submit" value="Submit">
+        <textarea rows = "5" cols = "60" class="text-input-bounty" name="comment" placeholder="Enter comment here"></textarea>
+        <input class="submit-bounty" type="submit" value="Submit">
     </form>
     {{#each messages}}
     <div class="message-div">
