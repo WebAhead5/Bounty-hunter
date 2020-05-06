@@ -13,18 +13,16 @@ tape("tape is working", t => {
     t.end();
 });
 
-// tape('test findByUsername', t=> {
-//     const username = 'supermario'
-//     let actual;
-//     findByUsername(username, (err, res)=>{
-//         if(err) throw err;
-//         actual = res;
-//         console.log(actual)
-//         let expected = [{username: 'supermario'}]
-//         t.deepEqual(actual, expected)
-//         t.end()
-//     })
-// })
+tape('test findByUsername', async t=> {
+    const username = 'supermario'
+    let actual;
+    const user = await findByUsername(username)
+        actual = user;
+        console.log(actual)
+        let expected = [{username: 'supermario'}]
+        t.deepEqual(actual, expected)
+        t.end()
+})
 
 
 
