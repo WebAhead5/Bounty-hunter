@@ -14,18 +14,44 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 80%;
     margin-left: 10%;
     margin-top: 100px;
+}
+
+.welcomeCowboy {
+    margin-bottom: 5%;
 }
 
 .welcome_msg {
     font-family: 'Rye', cursive;
     font-size: 35px;
     color: #483436;
-    padding: 30px 40px;
+    padding: 12% 10% 1% 10%;
 }
+
+.headerLink {
+
+
+    transition: 0.2s ease-in;
+}
+
+.headerLink:hover {
+
+    color:rgb(197, 20, 20);
+
+}
+
+.headerUsername {
+
+    color:rgb(197, 20, 20);
+
+}
+
+
 
 nav {
     display: flex;

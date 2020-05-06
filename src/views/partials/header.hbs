@@ -6,26 +6,28 @@
         <ul class="nav-links">
             {{#unless signedIn}}
             <li>
-                <a href="/">Home</a>
+                <a class="headerLink" href="/">Home</a>
             </li>
             <li>
-                <a href="/login">Login</a>
+                <a class="headerLink" href="/login">Login</a>
             </li>
             <li>
-                <a href="/register">Register</a>
+                <a class="headerLink" href="/register">Register</a>
             </li>
             {{else}}
-            <li>Signed in as: {{username}}</li>
             <li>
-                <a href="/">Home</a>
+                <a >Signed in as: <span class="headerUsername">{{username}}</span></a>
+            </li>
+            <li>
+                <a class="headerLink" href="/">Home</a>
             </li>
             {{#if admin}}
             <li>
-                <a href="/addbounty">Add Bounty</a>
+                <a class="headerLink"  href="/addbounty">Add Bounty</a>
             </li>
             {{/if}}
             <li>
-                <a href="/logout">Logout</a>
+                <a class="headerLink"  href="/logout">Logout</a>
             </li>
             {{/unless}}
         </ul>
