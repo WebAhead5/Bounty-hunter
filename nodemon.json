@@ -1,0 +1,5 @@
+{
+    "events": {
+        "restart": "NODE_ENV=test npm run resetdb"
+    }
+}
