@@ -32,17 +32,19 @@ div.each-bounty{
     height: 700px;
     width: 350px;
     border-radius: 4px;
-    background-color: rgb(207, 191, 120);
+    background-color: rgba(207, 191, 120, 0.829);
 
 }
 
 .float {
 
     transition: 1s ease-out;
+
 }
 
 .float:hover{
-transform: scale(1.03)
+transform: scale(1.03);
+background-color: rgb(207, 191, 120);
 }
 
 .each-bounty p {
