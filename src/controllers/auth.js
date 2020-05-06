@@ -34,7 +34,6 @@ exports.addUser = (req, res) => {
 
     //CHECK PASSWORD IS THE SAME
     const { name, password, username, confirmPassword } = req.body;
-    console.log("EMPTY", req.body)
 
     if (name === "" || password === '' || username === '' || confirmPassword === '') {
         return res.render('register', {
@@ -134,7 +133,6 @@ exports.logout = (req, res, next) => {
 //Cretae JWT and redirect tto home (logged in)
 
 const loginJWT = (res, dataobject, secret) => {
-    console.log("loginJWT tellus us dataobject and secret", dataobject, secret)
 
     jwt.sign(dataobject, secret, function (err, token) {
         if (err) {
