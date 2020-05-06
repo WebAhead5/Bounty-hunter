@@ -26,15 +26,15 @@ CREATE TABLE users (
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     message VARCHAR(300) NOT NULL,
-    userID VARCHAR(30) NOT NULL,
-    bountyID VARCHAR(30) NOT NULL,
+    userID INTEGER NOT NULL,
+    bountyID INTEGER NOT NULL,
     dateposted DATE NOT NULL
 );
 
 INSERT INTO bounties (name, picture,crimes,bounty,status,furtherinfo) VALUES
-('James', 'https://i.imgur.com/eaof9WM.png', 'Harassing Injuns out up on the north frontier', 500, 'At Large', 'Afraid of cactii'),
-('Jake', 'https://i.imgur.com/boaJaFA.png', 'Highway robbery out by Old Acre', 1000, 'At Large', 'Often confused with James'),
-('Marwan', 'https://i.imgur.com/8NVpLaE.jpg', 'Rustling cattle outside of Nazareth', 2000, 'At Large', 'He likes to seduce the cattle by playing sweet country music on his old acoustic guitar');
+('Jittery James Daniels', 'https://i.imgur.com/eaof9WM.png', 'Harassing Injuns out up on the north frontier', 500, 'At Large', 'Afraid of cactii'),
+('Snakey Jake', 'https://i.imgur.com/boaJaFA.png', 'Highway robbery out by Old Acre', 1000, 'At Large', 'Often confused with James'),
+('Mad-Eye Marwan', 'https://i.imgur.com/8NVpLaE.jpg', 'Rustling cattle outside of Nazareth', 2000, 'At Large', 'He likes to seduce the cattle by playing sweet country music on his old acoustic guitar');
 
 INSERT INTO users (name, username, password, admin, score) VALUES
 ('admin', 'admin', '$2b$10$sa/8nHXaQ5ZAOLcNtWQMbe92NFC/9xSGKadWjl..x8kUsT.bvcNHi', true, 20), 
