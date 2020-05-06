@@ -23,3 +23,135 @@
     font-size: 22px;
     margin: 2vw;
 }
+
+.homeLink {
+    margin: 2vh;
+    border-radius: 5px;
+    border: solid black;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
+
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+
+  a:visited {
+    color:black;
+  }
+ 
+  
+  a:active {
+    color:black;
+  }
+
+
+
+  /* LOGIN PAGE CSS */
+
+  .loginContainer {
+
+    display:flex;
+    justify-content: center;
+    margin-top: 4vw;
+    min-height: 35vh;
+    font-family: 'Rye', cursive;
+  }
+
+  .loginBlock {
+
+    width: 60%;
+    background-image: url("/img/paper2.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+   
+  }
+
+  .formBlock {
+
+    padding: 6vw;
+
+
+  }
+
+  .loginTitle {
+
+    font-size: 10vw;
+  }
+
+  .regTitle {
+
+    font-size: 8vw;
+  }
+
+
+  .loginForm {
+
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-input {
+    height: 35px;
+    padding: 5px;
+    margin: 1vw;
+    border: black solid 2px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+    background-color: rgba(245, 222, 179, 0.452);
+  }
+
+  .text-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+    font-weight: 600;
+  }
+  
+  .text-input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+    font-weight: 600;
+  }
+  
+  .text-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
+    font-weight: 600;
+  }
+
+  .submit {
+    font-family: 'Rye', cursive;
+    font-size: 2vh;
+    margin: 2vh;
+    width: 80%;
+    max-width: 300px;;
+    height: 45px;
+    border-radius: 5px;
+    border: rgba(0, 0, 0, 0.726) solid 2px;
+    background-color: rgba(75, 52, 13, 0.699);
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.671);
+    max-width: 300px;
+    letter-spacing: 3px;;
+  }
+
+  .submit:hover {
+
+ transition: 0.2s ease-in;
+ color: rgba(255, 255, 255, 0.76);
+ border: solid rgba(255, 255, 255, 0.616) 2px;
+
+  }
+
+  .loginErr {
+
+    text-align: center;
+    color: whitesmoke;
+    font-size: 2vh;
+  }

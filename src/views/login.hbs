@@ -1,10 +1,20 @@
 <section class="main__container--limited-width">
-    <h1 class="login_title">LOGIN</h1>
+    <div class="loginContainer">
+        <div class="loginBlock">
+    
+            <div class="formBlock">
 
-    <form class="login__form" action="/authenticate" method="POST">
-        <input class="text-input" type="text" name="username" placeholder="Username">
-        <input class="text-input" type="password" name="password" placeholder="Password">
-        <input class="submit" type="submit" value="Submit">
+                <h1 class="loginTitle">LOGIN</h1>
+
+
+
+                    <form class="loginForm" action="/authenticate" method="POST">
+                        <input class="text-input" type="text" name="username" placeholder="Username">
+                        <input class="text-input" type="password" name="password" placeholder="Password">
+                        <input class="submit" type="submit" value="ENTER">
     </form>
-    <div class="err-msg">{{error}} </div>
+                <div class="loginErr">{{error}} </div>
+            </div>
+        </div>
+    </div>
 </section>
