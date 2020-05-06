@@ -26,6 +26,19 @@
     margin-bottom: 5%;
 }
 
+.welcomeLink {
+
+    color:crimson !important;
+    transition: ease-out 0.3s !important;
+
+}
+
+.welcomeLink:hover {
+
+    color: rgb(163, 10, 10) !important;
+
+}
+
 .welcome_msg {
     font-family: 'Rye', cursive;
     font-size: 35px;
