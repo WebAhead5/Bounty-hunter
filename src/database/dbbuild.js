@@ -11,7 +11,6 @@ const runDbBuild = cb => dbConnection.query(sql,cb)
 if(process.env.RESETDB === 'true'){
     runDbBuild((err,res)=> {
         if(err) process.exit(1)
-        console.log('before exit 0')
          process.exit(0)
     })
 }
