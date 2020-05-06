@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/server.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "testdb": "NODE_ENV=test node ./src/tests/db-test.js",
+    "testdb": "NODE_ENV=test npm run resetdb && nodemon ./src/tests/db-test.js | tap-spec",
     "testRoutes": "NODE_ENV=test tape src/tests/router-test.js | tap-spec",
     "testDB": "NODE_ENV=test tape src/tests/db-test.js | tap-spec",
-    "test": "npm run testDB & npm run testRoutes"
+    "test": "npm run testDB & npm run testRoutes",
+    "resetdb": "RESETDB=true node src/database/dbbuild.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,9 @@
   },
   "homepage": "https://github.com/WebAhead5/Bountry-hunter#readme",
   "devDependencies": {
-    "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.0.0"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -32,10 +34,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.25.3",
     "pg-promise": "^10.5.2",
-    "supertest": "^4.0.2",
-    "tap-spec": "^5.0.0",
-    "tape": "^5.0.0",
-    "moment": "^2.25.3"
+    "serve-favicon": "^2.5.0",
+    "supertest": "^4.0.2"
   }
 }

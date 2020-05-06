@@ -11,6 +11,25 @@ tape("tape is working", t => {
     t.end();
 });
 
+tape('test findByUsername', async t=> {
+    const username = 'supermario'
+    let actual;
+    const user = await findByUsername(username)
+        actual = user.username;
+        console.log(actual)
+        let expected = 'supermario'
+        t.deepEqual(actual, expected)
+        t.end()
+})
+
+
+
+
+
+
+
+
+
 
 // tape("checkPassword", t => {
 //     runDbBuild(function (err, res) {
