@@ -4,7 +4,11 @@ const adduser = require("../models/queries/addUser");
 const findByUsername = require("../models/queries/findByUsername");
 const getBounties = require("../models/queries/readBounties");
 const getBountiesById = require("../models/queries/getBountiesById");
+const addBounty = require("../models/queries/addBounty")
+const db = require('../../src/database/dbconnection')
 
+
+// --------- findByUsername test --------------
 
 tape("tape is working", t => {
     t.equals(1, 1, "one equals one");
@@ -16,16 +20,41 @@ tape('test findByUsername', async t=> {
     let actual;
     const user = await findByUsername(username)
         actual = user.username;
-        console.log(actual)
         let expected = 'supermario'
         t.deepEqual(actual, expected)
         t.end()
 })
 
+tape('test findByUsername get other details', async t=> {
+    const username = 'supermario'
+    let actual;
+    const user = await findByUsername(username);
+    actual = user.name;
+    let expected = 'Mario'
+    t.deepEqual(actual, expected);
+    t.end()
+})
 
+tape('test findByUsername if retreives the right length', async t=> {
+    const username = 'supermario'
+    let actual; 
+    const user = await findByUsername(username);
+    actual = Object.keys(user).length
+    let expected = 6
+    t.deepEqual(actual, expected)
+    t.end()
+})
 
+// --------- addBounty test --------------
 
+tape('test add bounty functionality', async t=> {
 
+    let actual = await addBounty('name', 'picture','crimes',555,'status','furtherinfo')
+
+    let expected = 'bounty has been added'
+    t.deepEqual(actual, expected)
+    t.end()
+})
 
 
 
