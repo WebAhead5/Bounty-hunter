@@ -7,8 +7,8 @@
     "start": "nodemon src/server.js",
     "dev": "nodemon src/server.js",
     "testdb": "NODE_ENV=test node ./src/tests/db-test.js",
-    "testRoutes": "tape src/tests/router-test.js | tap-spec",
-    "testDB": "tape src/tests/db-test.js | tap-spec",
+    "testRoutes": "NODE_ENV=test tape src/tests/router-test.js | tap-spec",
+    "testDB": "NODE_ENV=test tape src/tests/db-test.js | tap-spec",
     "test": "npm run testDB & npm run testRoutes"
   },
   "repository": {

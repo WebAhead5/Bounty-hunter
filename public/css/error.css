@@ -11,6 +11,7 @@
     align-items: center;
     padding: 4%;
     font-family: 'Rye', cursive;
+    background-color: white;
 }
 
 .error {
@@ -28,8 +29,15 @@
     margin: 2vh;
     border-radius: 5px;
     border: solid black;
-    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4)
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4);
+    transition: ease-out 0.6s;
 
+}
+
+.homeLink:hover {
+
+  transform: scale(1.1);
+  background-color: rgba(245, 222, 179, 0.808);
 }
 
 a:link {
