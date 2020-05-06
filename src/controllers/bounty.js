@@ -2,6 +2,7 @@ const getBountiesById = require('../models/queries/getBountiesById');
 const getMessageData = require('../models/queries/getMessageData');
 const addBounty = require('../models/queries/addBounty');
 const removeBounty = require('../models/queries/removeBounty');
+const getUserData = require('../models/queries/getUserData')
 
 
 // TODO: add error handling
@@ -16,15 +17,24 @@ exports.get = async (req, res) => {
 
     const bountyData = await getBountiesById(req.params.id);
     const messageData = await getMessageData(req.params.id);
-    console.log(res.locals.username);
-
+    //const userData = await getUserData(req.params.id);
+    //console.log('req.params.id: ',req.params.id);
+    
+    //console.log('userData: ',userData);
+    // let usernames = userData.reduce(
+    //     (acc, obj) => {
+    //   acc[obj.id] = obj.name
+    //     return acc;
+    //   },{})
+    
+    // console.log('usernames: ', usernames);
+    // console.log('bountyData: ', bountyData);
 
     if (res.locals.signedIn) {
         return res.render('bounty', {
             signedIn: true,
             bounties: bountyData,
             messages: messageData,
-            username: res.locals.username,
             admin: res.locals.admin
         });
     }

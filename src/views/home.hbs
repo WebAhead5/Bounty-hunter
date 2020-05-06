@@ -5,27 +5,22 @@
             {{#each bounties}}
             <div class="each-bounty">
                 <p>WANTED</p>
-            <img src="{{this.picture}}" alt="bounty photo">
-            <ul>
-                <li>Name:  {{this.name}} </li>
-                <li>Wanted For: {{this.crimes}} </li>
-                <li>Status: {{this.status}} </li>
-                <li>Reward: {{this.bounty}} </li>
-                <li>Other information: {{this.furtherinfo}} </li>
+                <img src="{{this.picture}}" alt="bounty photo">
+                <ul>
+                    <li><b>Name:</b> {{this.name}} </li>
+                    <li><b>Wanted For:</b> {{this.crimes}} </li>
+                    <li><b>Status:</b> {{this.status}} </li>
+                    <li><b>Reward:</b> ${{this.bounty}} </li>
+                    <li><b>Other information:</b> {{this.furtherinfo}} </li>
+                </ul>
                 {{#if ../admin}}
-                <li>
-            <form class="delete-form" action="/deletebounty/{{this.id}}" method="post">
-                <button>Delete</button>
-            </form>
-            </li>
-            {{/if}}
-            <li>
+                <form class="delete-form" action="/deletebounty/{{this.id}}" method="post">
+                    <button>Delete</button>
+                </form>
+                {{/if}}
                 <a href="/bounty/{{this.id}}" class="details_ref">Click here for more detail</a>
-            </li>
-            </ul>
-            
             </div>
-            
+
             {{/each}}
         </div>
     </section>

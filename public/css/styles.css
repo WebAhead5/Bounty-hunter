@@ -51,14 +51,15 @@ nav {
 
 .nav-links li {
     list-style: none;
-}
-
-.nav-links a {
     color: #483436;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 14px;
+}
+
+.nav-links a {
+
 }
 
 .burger {
@@ -121,3 +122,4 @@ section{
     padding-bottom: 30px;
 }
 
+h4{margin-left: 10px;}
