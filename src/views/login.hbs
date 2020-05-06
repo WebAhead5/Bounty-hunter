@@ -13,7 +13,9 @@
                         <input class="text-input" type="password" name="password" placeholder="Password">
                         <input class="submit" type="submit" value="ENTER">
     </form>
-                <div class="loginErr">{{error}} </div>
+{{#if error}}
+    <div class="loginErr"><i class="fas fa-skull"></i><br>{{error}}</div>
+    {{/if}}
             </div>
         </div>
     </div>

@@ -11,8 +11,9 @@
         <input class="text-input" type="password" name="confirmPassword" placeholder="Confirm password">
         <input class="submit" type="submit" value="JOIN US">
     </form>
-
-    <div class="loginErr">{{error}}</div>
+{{#if error}}
+    <div class="loginErr"><i class="fas fa-skull"></i><br>{{error}}</div>
+    {{/if}}
                </div>
         </div>
     </div>
