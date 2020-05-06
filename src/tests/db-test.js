@@ -5,6 +5,7 @@ const findByUsername = require("../models/queries/findByUsername");
 const getBounties = require("../models/queries/readBounties");
 const getBountiesById = require("../models/queries/getBountiesById");
 const addBounty = require("../models/queries/addBounty")
+const removeBounty = require("../models/queries/removeBounty")
 const db = require('../../src/database/dbconnection')
 
 
@@ -50,14 +51,33 @@ tape('test findByUsername if retreives the right length', async t=> {
 tape('test add bounty functionality', async t=> {
 
     let actual = await addBounty('name', 'picture','crimes',555,'status','furtherinfo')
-
-    let expected = 'bounty has been added'
+    let expected = 'bounty has been added' 
     t.deepEqual(actual, expected)
     t.end()
 })
 
+tape('test remove bounty', async t => {
+    id = 1;
+    await removeBounty(id);
+    let readActual = await db.query(`SELECT id from bounties where id = 1;`)
+    let actual = readActual.rows.length
+    let expected = 0;
+    t.deepEqual(actual, expected)
+    t.end()
+
+})
 
 
+
+// tape('test remove bounty', async t => {
+//     id = 1;
+//     await removeBounty(id);
+//     let actual = db.query('SELECT id FROM bounties')
+//     let expected = 
+//     t.deepEqual(actual, expected)
+//     t.end()
+
+// })
 
 
 // tape("checkPassword", t => {
