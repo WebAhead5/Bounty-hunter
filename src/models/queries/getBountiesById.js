@@ -1,12 +1,14 @@
 const db = require('../../database/dbconnection')
 
-module.exports = async function (bountyId) {
-    try {
-        var bountyId = await db.query('SELECT * FROM bounties WHERE id = $1;', [bountyId])
-    } catch (e) {
-        console.error(`getBountiesByName Error: ${e}`);
-        throw new Error('an error occurred in models/getBountiesByName.js')
-    }
-    if(!bountyId.rows.length) throw new Error('models/getBountiesByName bounty not found')
-    return bountyId.rows[0]
+module.exports = function (bountyId) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            var id = await db.query('SELECT * FROM bounties WHERE id = $1;', [bountyId])
+            if (!id.rows.length) throw new Error('models/getBountiesById bounty not found')
+            resolve(id.rows[0])
+        } catch (e) {
+            console.error(`getBountiesByName Error: ${e}`);
+            reject(new Error('an error occurred in models/getBountiesById.js'))
+        }
+    })
 }

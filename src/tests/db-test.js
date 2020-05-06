@@ -1,11 +1,13 @@
 const tape = require("tape");
 const runDbBuild = require("../database/dbbuild");
-const adduser = require("../models/queries/addUser");
+const addUser = require("../models/queries/addUser");
 const findByUsername = require("../models/queries/findByUsername");
 const getBounties = require("../models/queries/readBounties");
 const getBountiesById = require("../models/queries/getBountiesById");
 const addBounty = require("../models/queries/addBounty")
 const removeBounty = require("../models/queries/removeBounty")
+const getMessageData = require("../models/queries/getMessageData")
+const addNewComment = require("../models/queries/addNewComment");
 const db = require('../../src/database/dbconnection')
 
 
@@ -56,6 +58,10 @@ tape('test add bounty functionality', async t=> {
     t.end()
 })
 
+
+// --------- removeBounty test --------------
+
+
 tape('test remove bounty', async t => {
     id = 1;
     await removeBounty(id);
@@ -64,100 +70,55 @@ tape('test remove bounty', async t => {
     let expected = 0;
     t.deepEqual(actual, expected)
     t.end()
+})
 
+// --------- addUser test --------------
+
+tape('test adding a new user', async t=> {
+    let actual = await addUser('name', 'username', 'password', 'admin', 0)
+    let expected = 'user has been added' 
+    t.deepEqual(actual, expected)
+    t.end()
+})
+
+
+// --------- getBountiesById test --------------
+
+tape('test getting bounty by id', async t=> {
+    // let id = 2
+    let actual = await getBountiesById(2)
+    actual = actual.name
+    let expected = 'Snakey Jake'
+    t.deepEqual(actual, expected)
+    t.end()
+})
+
+// --------- addNewComment test --------------
+
+tape('test getmessagedata', async t => {
+    message = "testing message1";
+    const newCommentAdded = await addNewComment(message, 5, 5,"05/05/2020");
+    let res = await db.query(`SELECT message FROM comments WHERE message = 'testing message1'`)
+    actual = res.rows[0].message
+    let expected = "testing message1";
+    t.deepEqual(actual, expected)
+    t.end()
+})
+
+// --------- getMessageData test --------------
+
+tape('test getmessagedata', async t => {
+    runDbBuild()
+    bountyid = 1;
+    const messageData = await getMessageData(1);
+    let actual = messageData[0].id
+    let expected = 1;
+    t.deepEqual(actual, expected)
+    t.end()
 })
 
 
 
-// tape('test remove bounty', async t => {
-//     id = 1;
-//     await removeBounty(id);
-//     let actual = db.query('SELECT id FROM bounties')
-//     let expected = 
-//     t.deepEqual(actual, expected)
-//     t.end()
-
-// })
 
 
-// tape("checkPassword", t => {
-//     runDbBuild(function (err, res) {
-//         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
 
-//         let expected = [
-//             {
-//                 id: 1,
-//                 firstname: "Cassaundra",
-//                 lastname: "Bloxham",
-//                 email: "cbloxham0@tamu.edu",
-//                 password: "BiwNM5eVU"
-//             }
-//         ];
-
-//         sqlFuncs.checkPassword("cbloxham0@tamu.edu", "BiwNM5eVU", (err, result) => {
-//             if (err) console.log(err);
-//             t.deepEqual(result, expected, "Returns expected data based on password");
-//             t.end();
-//         });
-//     });
-// });
-
-
-// tape("get user data & reservations", t => {
-//     runDbBuild(function (err, res) {
-//         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-
-
-//         sqlFuncs.getUser("Lexis", (err, result) => {
-//             if (err) console.log(err);
-
-
-//             const expected =
-//             {
-//                 id: 4,
-//                 firstname: 'Lexis',
-//                 lastname: 'Bennell',
-//                 email: 'lbennell7@alexa.com',
-//                 password: 'XtWurJnVfhw',
-//                 userid: 8,
-//                 carid: 3,
-//             }
-
-//             t.deepEqual(result.length, 1, "Returns one user");
-//             t.deepEqual(typeof result, "object", "Returns object");
-//             t.deepEqual(result[0].userid, expected.userid, "Returns expected user ID");
-//             t.deepEqual(result[0].carid, expected.carid, "Returns expected car ID");
-//             t.end();
-//         });
-//     });
-// });
-
-
-// tape("get all cars", t => {
-//     runDbBuild(function (err, res) {
-//         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-
-
-//         var expected = {
-//             id: 1,
-//             make: 'Acura',
-//             model: 'NSX',
-//             year: '2002',
-//             color: 'Purple',
-//             seatsnumber: '2',
-//             rate: '3',
-//             image: 'https://www.wallpaperflare.com/static/751/782/488/acura-tl-2002-blue-wallpaper.jpg'
-//         }
-
-
-//         sqlFuncs.getAllCars((err, result) => {
-//             if (err) console.log(err);
-//             //console.log(result)
-//             t.deepEqual(typeof result, "object", "Returns expected data type for all cars");
-//             t.deepEqual(result[0].make, expected.make, "Returns first car in list is Acura");
-//             t.deepEqual(result[0].color, expected.color, "Returns first car in list color as purple");
-//             t.deepEqual(result.length, 18, "Returns expected number of cars in DB");
-//             t.end();
-//         });
-//     });
-// });
