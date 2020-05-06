@@ -6,10 +6,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "testdb": "NODE_ENV=test node ./src/tests/db-test.js",
+    "testdb": "NODE_ENV=test npm run resetdb && nodemon ./src/tests/db-test.js | tap-spec",
     "testRoutes": "NODE_ENV=test tape src/tests/router-test.js | tap-spec",
     "testDB": "NODE_ENV=test tape src/tests/db-test.js | tap-spec",
-    "test": "npm run testDB & npm run testRoutes"
+    "test": "npm run testDB & npm run testRoutes",
+    "resetdb": "RESETDB=true node src/database/dbbuild.js"
   },
   "repository": {
     "type": "git",
