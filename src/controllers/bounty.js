@@ -107,5 +107,7 @@ exports.addBountyPage = async (req, res) => {
         res.render('addbounty', {
             username: res.locals.username
         })
+    } else {
+        res.redirect("/")
     }
 }

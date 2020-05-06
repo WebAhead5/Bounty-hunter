@@ -17,16 +17,38 @@ test("route to homepage", t => {
 });
 
 
-//set auth to allow page FIXME:
-test("route to bounty 1", t => {
+test("route to bounty 1  - NOT LOGGED IN (redirect)", t => {
     supertest(router)
         .get("/bounty/1")
-        .expect(200)
-        .expect("content-type", "text/html; charset=utf-8")
+        .expect(302)
+        .expect("content-type", "text/plain; charset=utf-8")
         .end((err, res) => {
             t.error(err);
             t.end();
         });
+});
+
+// Logged in route
+test("route to bounty 1  - LOGGED IN", t => {
+    supertest(router)
+        .post('/authenticate')
+        .send({ username: 'admin', password: 'admin' })
+        .end((err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            let cookie = res.headers['set-cookie']
+
+            supertest(router)
+                .get("/bounty/1")
+                .set('Cookie', cookie)
+                .expect(200)
+                .expect("content-type", "text/html; charset=utf-8")
+                .end((err, res) => {
+                    t.error(err);
+                    t.end();
+                });
+        })
 });
 
 test("route to login", t => {
@@ -51,24 +73,58 @@ test("route to register", t => {
         });
 });
 
-FIXME:
-test("route to css.styles", t => {
+test("route to add bounties - NOT LOGGED IN (redirect)", t => {
     supertest(router)
-        .get("/public/css/styles.css")
-        .expect(200)
-        .expect("content-type", "text/css")
+        .get("/addBounty")
+        .expect(302)
+        .expect("content-type", "text/plain; charset=utf-8")
         .end((err, res) => {
             t.error(err);
             t.end();
         });
 });
 
-FIXME:
+//Logged in route
+test("route to add bounties - LOGGED IN AS ADMIN", t => {
+    supertest(router)
+        .post('/authenticate')
+        .send({ username: 'admin', password: 'admin' })
+        .end((err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            let cookie = res.headers['set-cookie']
+
+            supertest(router)
+                .get("/addbounty")
+                .set('Cookie', cookie)
+                .expect(200)
+                .expect("content-type", "text/html; charset=utf-8")
+                .end((err, res) => {
+                    t.error(err);
+                    t.end();
+                });
+        })
+});
+
+
+test("route to css.styles", t => {
+    supertest(router)
+        .get("/css/styles.css")
+        .expect(200)
+        .expect("content-type", "text/css; charset=UTF-8")
+        .end((err, res) => {
+            t.error(err);
+            t.end();
+        });
+});
+
+
 test("route to cactus.jpg", t => {
     supertest(router)
-        .get("/public/img/cactus.jpg")
+        .get("/img/cactus.jpg")
         .expect(200)
-        .expect("content-type", "image/jpg")
+        .expect("content-type", "image/jpeg")
         .end((err, res) => {
             t.error(err);
             t.end();
@@ -96,22 +152,4 @@ test("404 no page found", t => {
             t.end();
         });
 });
-
-//FIXME:
-// //set 500 code
-// test("500 Server down", t => {
-//     supertest(router)
-//         .get("/logout")
-//         .expect(500)
-//         .expect("content-type", "text/html; charset=utf-8")
-//         .end((err, res) => {
-//             t.error(err);
-//             t.end();
-//         });
-// });
-
-
-//POST ROUTES
-
-
 
