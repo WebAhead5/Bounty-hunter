@@ -38,8 +38,8 @@ INSERT INTO bounties (name, picture,crimes,bounty,status,furtherinfo) VALUES
 
 INSERT INTO users (name, username, password, admin, score) VALUES
 ('admin', 'admin', '$2b$10$sa/8nHXaQ5ZAOLcNtWQMbe92NFC/9xSGKadWjl..x8kUsT.bvcNHi', true, 20), 
-('Mario', 'supermario', 'password1', FALSE, 20),
-('Luigi', 'luigiisbetter', 'password2', FALSE, 30);
+('Mario', 'supermario', '$2b$10$sa/8nHXaQ5ZAOLcNtWQMbe92NFC/9xSGKadWjl..x8kUsT.bvcNHi', FALSE, 20),
+('Luigi', 'luigiisbetter', '$2b$10$sa/8nHXaQ5ZAOLcNtWQMbe92NFC/9xSGKadWjl..x8kUsT.bvcNHi', FALSE, 30);
 
 
 INSERT INTO comments (message, userID, bountyID, dateposted) VALUES
