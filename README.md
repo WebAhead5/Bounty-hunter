@@ -42,7 +42,7 @@ Our home page:
 
 :twisted_rightwards_arrows:
 
- **GET ROUTES**
+**GET ROUTES**
 - **GET /** -  Welcome / Homepage, dependant on if user is logged in
 - **GET bounty/id** - details of bounty (LOGGED IN ONLY)
 - **GET addbounty** - add new bounty page (ADMIN ONLY)
@@ -94,6 +94,7 @@ Our home page:
 - All Admin routes (Add Bounty, delete bounty functionality on Home page) require a valid Admin JWT token
 - When logged in, JWT token prevents you from accessing Login or Register page again
 - When JWT token expires, user is redirected to Welcome screen and logged out.
+- Comments can only be added by logged in users, and cannot be empty
 - Backend also prevents the user from submitting invalid details on the register and login page, as a second check.
 - Any bad routes are automatically redirected to our 404 page, which then has a link back to home/welcome (dependant on if user is logged in or not)
 
@@ -108,13 +109,10 @@ Any son-of-a-gun can post a comment on a bounty once logged in. The post will be
 
 # Testing:
 
-- DB Testing 16/16   :heavy_check_mark:
+- DB Testing 16/16  :heavy_check_mark:
 - Route Testing 15/15  :heavy_check_mark:
+- More tests needed for bounty.js, auth.js & comment.js! :weary:
 
 **Current Test Coverage:**
 
-![](https://i.ibb.co/ZSTcjn6/nyccov.png)
-
-
-
-
+![](https://i.ibb.co/Zcc8Tr2/ny2.png)
