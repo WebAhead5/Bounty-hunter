@@ -42,32 +42,32 @@ Our home page:
 
 :twisted_rightwards_arrows:
 
-**GET ROUTES**
-**GET /** -  Welcome / Homepage, dependant on if user is logged in
+ **GET ROUTES**
+`**GET /** -  Welcome / Homepage, dependant on if user is logged in
 **GET bounty/id** - details of bounty (LOGGED IN ONLY)
-**GET addbounty** - add new bounty page (ADMIN ONLY)
+**GET addbounty** - add new bounty page (ADMIN ONLY)`
 
 :twisted_rightwards_arrows:
 
 **AUTH ROUTES**
-**GET login** - login page 
-**GET register** - register page 
-**GET logout** - logout page 
+- **GET login** - login page 
+- **GET register** - register page 
+- **GET logout** - logout page 
 
 :twisted_rightwards_arrows:
 
 **POST ROUTES**
-**POST authenticate** - login & provide JWT
-**POST addUser**- adds user on registration 
-**POST addBounty** - adds bounty (ADMIN ONLY)
-**POST deletebounty/id**- deletes bounty (ADMIN ONLY)
-**POST addComment** - add comment to bounty (LOGGED IN ONLY)
+- **POST authenticate** - login & provide JWT
+- **POST addUser**- adds user on registration 
+- **POST addBounty** - adds bounty (ADMIN ONLY)
+- **POST deletebounty/id**- deletes bounty (ADMIN ONLY)
+- **POST addComment** - add comment to bounty (LOGGED IN ONLY)
 
 :twisted_rightwards_arrows:
 
 **ERROR ROUTES**
-**GET client** - 404 page
-**GET server** - 500 page
+- **GET client** - 404 page
+- **GET server** - 500 page
 
 ## Verification 
 
