@@ -98,9 +98,11 @@ Our home page:
 - Backend also prevents the user from submitting invalid details on the register and login page, as a second check.
 - Any bad routes are automatically redirected to our 404 page, which then has a link back to home/welcome (dependant on if user is logged in or not)
 
-#### Adding and Removing Bounties (Marwan)
+#### Adding and Removing Bounties
 
-#### Posting Messages (James)
+Only the sheriff is allowed to add and remove bounties, so handle bars will only reveal admin controls on the homepage to a user with a JWT token with admin access, and the add bounty page will only be visible to the admin too! This stops any of them bad guys from messing with our bounties! Ye-hah!
+
+#### Posting Messages 
 
 Any son-of-a-gun can post a comment on a bounty once logged in. The post will be displayed along with their associated username and date of the post.
 
