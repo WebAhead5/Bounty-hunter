@@ -5,14 +5,14 @@
 * [Heroku repository](https://dashboard.heroku.com/apps/bounty--hunter)
 * [Github Repository](https://github.com/WebAhead5/Bountry-hunter)
 
-### Introduction
+## Introduction
 
 Bounty Hunters is a web app created for sheriffs to post the latest available bounties to would-be bounty hunters. The authentication system allows for anyone to sign up as a Bounty Hunter (should they be brave, or crazy enough) and post comments. There is also a feature to prevent anyone but sheriffs adding new bounties to the list.
 
 ![](https://i.imgur.com/Y1X92LV.jpg)
 
 
-### User Story
+## User Story
 
 - A welcome that includes a few description about the the point of the website. on this page the user have two options, to Login or to Register if he is not a user already.
 - after logging in the user should be able to see the home page, without logging in or a register the user should not be able to enter the homepage or see any of the website sensitive data about the bounties.
@@ -98,18 +98,18 @@ Our home page:
 - Backend also prevents the user from submitting invalid details on the register and login page, as a second check.
 - Any bad routes are automatically redirected to our 404 page, which then has a link back to home/welcome (dependant on if user is logged in or not)
 
-#### Adding and Removing Bounties
+## Adding and Removing Bounties
 
 Only the sheriff is allowed to add and remove bounties, so handle bars will only reveal admin controls on the homepage to a user with a JWT token with admin access, and the add bounty page will only be visible to the admin too! This stops any of them bad guys from messing with our bounties! Ye-hah!
 
-#### Posting Messages 
+## Posting Messages 
 
 Any son-of-a-gun can post a comment on a bounty once logged in. The post will be displayed along with their associated username and date of the post.
 
 ![](https://i.imgur.com/EVdOuXb.gif)
 
 
-# Testing:
+## Testing:
 
 - DB Testing 16/16  :heavy_check_mark:
 - Route Testing 15/15  :heavy_check_mark:
