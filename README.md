@@ -108,12 +108,12 @@ Any son-of-a-gun can post a comment on a bounty once logged in. The post will be
 
 # Testing:
 
-- DB Testing  :heavy_check_mark:
-- Route Testing  :heavy_check_mark:
+- DB Testing 16/16   :heavy_check_mark:
+- Route Testing 15/15  :heavy_check_mark:
 
 **Current Test Coverage:**
 
-![](https://i.ibb.co/Q8M1Hg1/nyc-Bounty.png)
+![](https://i.ibb.co/ZSTcjn6/nyccov.png)
 
 
 
