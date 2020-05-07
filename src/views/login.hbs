@@ -9,8 +9,10 @@
 
 
                     <form class="loginForm" action="/authenticate" method="POST">
-                        <input class="text-input" type="text" name="username" placeholder="Username">
-                        <input class="text-input" type="password" name="password" placeholder="Password">
+                        <input class="text-input" type="text" name="username" id="username" placeholder="Username" minlength="5" required>
+                        <p id="usernameErr"></p>
+                        <input class="text-input" type="password" name="password" id="password" placeholder="Password" required>
+                        <p id="passwordErr"></p>
                         <input class="submit" type="submit" value="ENTER">
     </form>
 {{#if error}}
@@ -20,3 +22,4 @@
         </div>
     </div>
 </section>
+<script src="/dom/login.js"></script>
