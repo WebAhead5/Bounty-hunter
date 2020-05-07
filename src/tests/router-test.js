@@ -198,6 +198,47 @@ test("route to bounty 1 - wrong password", t => {
         });
 });
 
+test("route to bounty 1 - fails front end vadlidation", t => {
+    supertest(router)
+        .post('/authenticate')
+        .send({ username: '', password: '' })
+        .end((err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            supertest(router)
+                .get("/")
+                .expect(200)
+                .expect("content-type", "text/html; charset=utf-8")
+                .end((err, res) => {
+                    t.error(err);
+                    t.end();
+                });
+        });
+});
+
+
+
+test("route to register - fail", t => {
+    supertest(router)
+        .post('/register')
+        .send({ name: '', username: '', password: '', confirmPassword: '' })
+        .end((err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            supertest(router)
+                .get("/")
+                .expect(200)
+                .expect("content-type", "text/html; charset=utf-8")
+                .end((err, res) => {
+                    t.error(err);
+                    t.end();
+                });
+        });
+});
+
+
 
 test("route to bounty 1 - wrong password - redirect", t => {
     supertest(router)
