@@ -10,13 +10,17 @@ const getMessageData = require("../models/queries/getMessageData")
 const addNewComment = require("../models/queries/addNewComment");
 const db = require('../../src/database/dbconnection')
 
-
-// --------- findByUsername test --------------
+// --------- initial test ----------
 
 tape("tape is working", t => {
     t.equals(1, 1, "one equals one");
     t.end();
 });
+
+
+// --------- findByUsername test --------------
+
+
 
 tape('test findByUsername', async t=> {
     const username = 'supermario'
@@ -48,6 +52,45 @@ tape('test findByUsername if retreives the right length', async t=> {
     t.end()
 })
 
+// --------- readBounties test ---------------
+
+tape('test getBounties', async t=> {
+    let actual;
+    const bounties = await getBounties()
+        actual = typeof bounties
+        let expected = 'object'
+        t.deepEqual(actual, expected, 'both should be an object')
+        t.end()
+})
+
+tape('test the values that are retreived', async t=> {
+    let actual;
+    const bounties = await getBounties()
+    actual = bounties[0].id
+    let expected = 1
+    t.deepEqual(actual, expected, 'should be 1')
+    t.end()
+})
+
+tape('test the values that are retreived', async t=> {
+    let actual;
+    const bounties = await getBounties()
+    actual = bounties[1].name
+    let expected = 'Snakey Jake'
+    t.deepEqual(actual, expected, 'should be Snakey Jake')
+    t.end()
+})
+
+tape('test the length of the bounties', async t=> {
+    let actual;
+    const bounties = await getBounties()
+    actual = bounties.length
+    let expected = 3
+    t.deepEqual(actual, expected, 'should be equal 3')
+    t.end()
+})
+
+
 // --------- addBounty test --------------
 
 tape('test add bounty functionality', async t=> {
@@ -58,6 +101,17 @@ tape('test add bounty functionality', async t=> {
     t.end()
 })
 
+tape('test adding a new bounty with wrong values "long username"', async t=> {
+    try {
+        await addBounty('nammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmme', 'picture','crimes',555,'status','furtherinfo')
+        t.fail()
+    }
+    catch{
+        t.pass('an error has occurred in the database')
+    } finally {
+        t.end()
+    }
+})
 
 // --------- removeBounty test --------------
 
@@ -79,6 +133,19 @@ tape('test adding a new user', async t=> {
     let expected = 'user has been added' 
     t.deepEqual(actual, expected)
     t.end()
+})
+
+tape('test adding a new user with wrong values "long username"', async t=> {
+    runDbBuild()
+    try {
+        await addUser('gg', 'yggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 'ttt', 0)
+        t.fail()
+    }
+    catch{
+        t.pass('an error has occurred in the database')
+    } finally {
+        t.end()
+    }
 })
 
 
