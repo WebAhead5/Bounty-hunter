@@ -43,9 +43,9 @@ Our home page:
 :twisted_rightwards_arrows:
 
  **GET ROUTES**
-`**GET /** -  Welcome / Homepage, dependant on if user is logged in
-**GET bounty/id** - details of bounty (LOGGED IN ONLY)
-**GET addbounty** - add new bounty page (ADMIN ONLY)`
+- **GET /** -  Welcome / Homepage, dependant on if user is logged in
+- **GET bounty/id** - details of bounty (LOGGED IN ONLY)
+- **GET addbounty** - add new bounty page (ADMIN ONLY)
 
 :twisted_rightwards_arrows:
 
