@@ -24,7 +24,7 @@
     <div class="message-div">
         <p class="username">{{this.username}}</p>
                 {{#if ../admin}}
-        <form class="delete-form message-delete" action="/deletebounty/{{this.id}}" method="post">
+        <form class="delete-form message-delete" action="/deletemessage/{{this.id}}" method="post">
             <button>Delete</button>
         </form>
         {{/if}}

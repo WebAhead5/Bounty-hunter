@@ -1,12 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const addNewComment = require('../models/queries/addNewComment')
 const moment = require('moment')
 const url = require('url')
-//().format('YYYY-MM-DD HH:mm:ss');
-
-
-
+const addNewComment = require('../models/queries/addNewComment')
+const deleteMessageQuery = require('../models/queries/deleteMessageQuery')
 
 exports.addComment = (req, res) => {
     let { comment } = req.body;
@@ -23,4 +20,23 @@ exports.addComment = (req, res) => {
     }
 }
 
-//exports.getComments = ()
+exports.delete = async (req, res) => {
+    try {
+        if (res.locals.error) {
+            return res.render('error', {
+                error: res.locals.error
+            });
+        }
+        const messageid = req.params.id
+        if (res.locals.signedIn && res.locals.admin) {
+            await deleteMessageQuery(messageid)
+            res.redirect('back')
+        }
+    }
+    catch (error) {
+        res.render('error', {
+            statusCode: "Delete Message",
+            errorMessage: error.message
+        });
+    }
+}
