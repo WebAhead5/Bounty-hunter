@@ -160,7 +160,6 @@ div.message-div{
     font-family: 'Rye', cursive;    
     background-color: rgb(207, 191, 120);
     border-radius: 4px;
-
 }
 
 .message-div p {
@@ -170,8 +169,7 @@ div.message-div{
     font-size: 12px;
 }
 
-
-p.username{align-self: left;    color: black; font-weight: bold;}
+p.username{align-self: left; display:inline-block;   color: black; font-weight: bold;}
 
 p.time{float: right; }
 
@@ -197,4 +195,10 @@ p.message-itself{
     border-radius: 1px;
     border: solid black;
     box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4);
+}
+
+form.message-delete {
+    display: inline-block;
+    align-self: center;
+    margin: 0;
 }

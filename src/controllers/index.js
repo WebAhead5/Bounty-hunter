@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+//Sub-Controllers
 const home = require('./home');
 const auth = require('./auth');
 const bounty = require('./bounty');
 const error = require('./error');
 const comment = require('./comment')
+
+
+//Middleware
 const authCheck = require('../middlewares/authCheck');
 
 

@@ -14,12 +14,20 @@
         </div>
     </div> <br>
     <form class="post-comment-form" action="/addComment" method="POST">
-        <textarea rows = "5" cols = "60" class="text-input-bounty" name="comment" placeholder="Enter comment here"></textarea>
+        <textarea rows="5" cols="60" class="text-input-bounty" name="comment"
+            placeholder="Enter comment here"></textarea>
         <input class="submit-bounty" type="submit" value="Submit">
     </form>
+
+
     {{#each messages}}
     <div class="message-div">
         <p class="username">{{this.username}}</p>
+                {{#if ../admin}}
+        <form class="delete-form message-delete" action="/deletebounty/{{this.id}}" method="post">
+            <button>Delete</button>
+        </form>
+        {{/if}}
         <p class="time">{{helpers this.dateposted}}</p>
         <p class="message-itself">{{this.message}}</p>
     </div>
